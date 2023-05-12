@@ -1,10 +1,13 @@
-<template>
-  <h1> Hello world </h1>
-</template>
 <script>
-export default {
-  setup() {
+import { RouterView } from 'vue-router'
 
-   }
+export default {
+  components: {
+    RouterView
+  },
 }
 </script>
+
+<template>
+  <RouterView />
+</template>
