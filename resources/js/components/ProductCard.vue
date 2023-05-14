@@ -19,6 +19,9 @@ export default {
     imageUrl: {
       type: String,
       required: true
+    },
+    imageThumb: {
+      type: String
     }
   },
   methods: {
@@ -30,13 +33,23 @@ export default {
 
       return priceFormatted;
     },
+  },
+  data() {
+    return {
+      isHover: false
+    }
   }
 }
 </script>
 
 <template>
   <div class="card">
-    <img :src="imageUrl" alt="">
+    <img
+      @mouseover="isHover = true"
+      @mouseleave="isHover = false"
+      :src="imageThumb && isHover ? imageThumb : imageUrl"
+      alt=""
+    >
     
     <div class="details-container">
       <div class="card-title">{{ name }}</div>
@@ -75,6 +88,7 @@ export default {
       width: 100%;
       height: 30rem;
       object-fit: cover;
+      cursor: pointer;
     }
 
     .details-container {

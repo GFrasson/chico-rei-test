@@ -200,6 +200,7 @@ export default {
       :price-old="product.price_old"
       :promo-name="product.promo_name"
       :image-url="product.img_cover"
+      :image-thumb="product.img_thumb"
     />
   </main>
 </template>
