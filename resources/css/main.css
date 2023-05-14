@@ -13,8 +13,10 @@
 
   --color-background: #f5f5f5;
   --color-background-300: #EBEBEB;
+  --color-background-dark: #201f1e;
   --color-input-border: #a7a6a5;
   --color-text: #1e1e1d;
+  --color-text-gray: #818181;
 }
 
 *,
