@@ -44,12 +44,22 @@ export default {
 
 <template>
   <div class="card">
-    <img
+    <div
       @mouseover="isHover = true"
       @mouseleave="isHover = false"
-      :src="imageThumb && isHover ? imageThumb : imageUrl"
-      alt=""
+      class="image-container"
     >
+      <img
+        v-if="imageThumb && isHover"
+        :src="imageThumb"
+        alt=""
+      >
+      <img
+        v-else
+        :src="imageUrl"
+        alt=""
+      >
+    </div>
     
     <div class="details-container">
       <div class="card-title">{{ name }}</div>
