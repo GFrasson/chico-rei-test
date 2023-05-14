@@ -1,7 +1,7 @@
 <script lang="ts">
 import ProductCard from '../components/ProductCard.vue';
 import Pagination from '../components/Pagination.vue';
-import axios from 'axios';
+import { listProducts } from '../services/productsService';
 
 interface Product {
   id: string;
@@ -20,23 +20,24 @@ export default {
     Pagination,
   },
   async mounted() {
-    try {
-      const response = await axios.get('/api/products', {
-        params: {
-          page: this.currentPage
-        }
-      });
-      
-      this.products = response.data.payload.products;
-    } catch (err) {
-      console.error(err);
-    }
+    this.products = await listProducts(this.currentPage);
   },
   data() {
     return {
       products: [] as Product[],
       currentPage: 1,
       totalPages: 7
+    }
+  },
+  methods: {
+    async goToPage(page: number) {
+      this.currentPage = page;
+      this.products = await listProducts(this.currentPage);
+
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
     }
   }
 }
@@ -59,7 +60,9 @@ export default {
   </main>
   <footer>
     <Pagination
-      :totalPages="totalPages"
+      :total-pages="totalPages"
+      :current-page="currentPage"
+      :go-to-page="goToPage"
     />
   </footer>
 </template>
