@@ -50,13 +50,14 @@ export default {
       class="image-container"
     >
       <img
-        v-if="imageThumb && isHover"
-        :src="imageThumb"
+        v-show="!imageThumb || !isHover"
+        :src="imageUrl"
         alt=""
       >
       <img
-        v-else
-        :src="imageUrl"
+        v-if="imageThumb"
+        v-show="isHover"
+        :src="imageThumb"
         alt=""
       >
     </div>
