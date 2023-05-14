@@ -1,5 +1,6 @@
 <script lang="ts">
 import ProductCard from '../components/ProductCard.vue';
+import Pagination from '../components/Pagination.vue';
 import axios from 'axios';
 
 interface Product {
@@ -15,7 +16,8 @@ interface Product {
 export default {
   name: "ProductsView",
   components: {
-    ProductCard
+    ProductCard,
+    Pagination,
   },
   async mounted() {
     try {
@@ -33,7 +35,8 @@ export default {
   data() {
     return {
       products: [] as Product[],
-      currentPage: 1
+      currentPage: 1,
+      totalPages: 7
     }
   }
 }
@@ -54,6 +57,11 @@ export default {
     />
     <h2 v-else>Carregando os produtos...</h2>
   </main>
+  <footer>
+    <Pagination
+      :totalPages="totalPages"
+    />
+  </footer>
 </template>
 
 <style scoped lang="less">
@@ -64,6 +72,14 @@ main {
   justify-content: center;
   align-items: flex-start;
   flex-wrap: wrap;
-  gap: 0.5rem;
+  row-gap: 1rem;
+  column-gap: 0.5rem;
+}
+
+footer {
+  margin: 2rem 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 </style>
