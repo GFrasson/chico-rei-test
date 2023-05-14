@@ -62,7 +62,7 @@ export default {
 
 <style scoped lang="less">
   .card {
-    width: 21rem;
+    width: 19rem;
     // height: 35rem;
     gap: 1rem;
 
