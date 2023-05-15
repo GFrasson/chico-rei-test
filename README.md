@@ -52,7 +52,7 @@ php artisan key:generate
 
  - Rode as migrations
 ```bash
-php artisan migrate:fresh
+php artisan migrate
 ```
 
 ## Execução
