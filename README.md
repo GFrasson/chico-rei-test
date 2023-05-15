@@ -9,6 +9,12 @@ Recriar uma funcionalidade do site da Chico Rei, como um catálogo de produtos c
 - Axios
 - Guzzle
 
+## Versões
+ - php: 8.2.2
+ - npm: 8.9.0
+ - node: 16.15.0
+ - composer: 2.5.2
+
 ## Consumo de API
 - [Link para API](https://rapidapi.com/okami4kak/api/scrapingant/)
 
@@ -35,7 +41,7 @@ DB_PASSWORD=                # Senha
 
  - Instale as dependências com os comandos
 ```bash
-composer install
+composer install   # (se der algum erro, tente com o comando: composer update)
 npm install
 ```
 
