@@ -66,6 +66,9 @@ npm run dev
 php artisan serve
 ```
 
+ - Acesse a aplicação pelo link gerado no terminal onde foi executado o comando `php artisan serve`
+ - Por padrão, a aplicação deve rodar no endereço `http://127.0.0.1:8000`
+
 ## Observação
 
 Na primeira execução do projeto, a aplicação consome a API buscando os dados do site da Chico Rei. Entretanto, a API é um pouco lenta e esse processo de buscar os dados pode demorar um pouco dependendo da sua conexão e processamento (uma média de aproximadamente 30 segundos). Após esse primeiro acesso, todos os dados necessários são salvos no banco de dados e, assim, nos próximos acessos o tempo de espera é reduzido consideravelmente.
