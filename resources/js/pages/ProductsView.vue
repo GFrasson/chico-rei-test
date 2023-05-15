@@ -26,9 +26,11 @@ export default {
     PhSlidersHorizontal
   },
   async mounted() {
-    const { products, filters } = await listProducts(this.currentPage, this.typeSelected);
+    const { products, filters, totalPages } = await listProducts(this.currentPage, this.typeSelected);
+    
     this.products = products;
     this.filters = filters;
+    this.totalPages = totalPages;
   },
   data() {
     return {
@@ -36,7 +38,7 @@ export default {
       filters: {} as Filters,
       typeSelected: null,
       currentPage: 1,
-      totalPages: 7
+      totalPages: 1
     }
   },
   methods: {
@@ -52,8 +54,12 @@ export default {
     },
     async handleTypeFilterChange(event) {
       this.typeSelected = event.target.value;
-      const { products } = await listProducts(this.currentPage, this.typeSelected);
+      this.currentPage = 1;
+      
+      const { products, totalPages } = await listProducts(this.currentPage, this.typeSelected);
+
       this.products = products;
+      this.totalPages = totalPages;
     }
   }
 }
