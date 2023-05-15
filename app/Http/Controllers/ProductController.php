@@ -33,17 +33,15 @@ class ProductController extends Controller
         }
 
         $page = $request->get('page') ?? 1;
-        $productsPerPage = 30;
-        
-        if (isset($productsFilteredFromType)) {
-            $products = $productsFilteredFromType->skip(($page - 1) * $productsPerPage)
+        $productsPerPage = 20;
+
+        $collectionToPaginate = $productsFilteredFromType ?? new Product;
+
+        $products = $collectionToPaginate->skip(($page - 1) * $productsPerPage)
                                                 ->take($productsPerPage)
                                                 ->get();
-        } else {
-            $products = Product::skip(($page - 1) * $productsPerPage)
-                                ->take($productsPerPage)
-                                ->get();
-        }
+
+        $totalPages = ceil($collectionToPaginate->count() / $productsPerPage);
 
         $filters = [
             'types' => array_map(function ($item) {
@@ -56,7 +54,8 @@ class ProductController extends Controller
             'message' => 'Products list',
             'payload' => [
                 'products' => $products,
-                'filters' => $filters
+                'filters' => $filters,
+                'totalPages' => $totalPages
             ]
         ], 200);
     }
