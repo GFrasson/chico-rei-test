@@ -87,7 +87,6 @@ export default {
 <style scoped lang="less">
   .card {
     width: 19rem;
-    // height: 35rem;
     gap: 1rem;
 
     display: flex;
@@ -144,25 +143,5 @@ export default {
       }
     }
   }
-
-  // @media (min-width: 956px) {
-  //   .card {
-  //     flex-direction: row;
-  //     width: 32rem;
-  //     height: 20em;
-
-  //     img {
-  //       height: 100%;
-  //       width: auto;
-  //       margin-right: 1.25rem;
-  //       margin-bottom: 0;
-  //     }
-
-  //     .details-container {
-  //       height: 100%;
-  //       justify-content: space-between;
-  //     }
-  //   }
-  // }
 
 </style>
