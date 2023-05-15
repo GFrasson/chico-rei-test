@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-async function listProducts(page: string, type?: string) {
+async function listProducts(page: number, type?: string) {
   try {
     const response = await axios.get('/api/products', {
       params: {
