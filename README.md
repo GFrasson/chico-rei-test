@@ -19,9 +19,10 @@ Recriar uma funcionalidade do site da Chico Rei, como um catálogo de produtos c
 git clone https://github.com/GFrasson/chico-rei-test
 ```
 
- - Crie um banco de dados Mysql (sugestão de nome já preenchido nas variáveis ambiente: `chico_rei_test`)
  - Crie um arquivo `.env` na raiz do projeto
  - Copie todo o conteúdo do arquivo `.env.example` e cole no arquivo `.env`
+ - Preencha a variável `RAPID_API_KEY` no arquivo `.env` com a chave para consumo da API
+ - Crie um banco de dados Mysql (sugestão de nome já preenchido nas variáveis ambiente: `chico_rei_test`)
  - Substitua as variáveis com os dados para a conexão com o banco Mysql criado:
 
 ```
