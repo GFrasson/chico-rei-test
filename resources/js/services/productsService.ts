@@ -1,10 +1,13 @@
 import axios from 'axios';
 
-async function listProducts(page: string) {
+async function listProducts(page: string, type?: string) {
   try {
     const response = await axios.get('/api/products', {
       params: {
-        page
+        page,
+        ...(type && {
+          type,
+        })
       }
     });
     

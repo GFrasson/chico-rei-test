@@ -26,7 +26,7 @@ export default {
     PhSlidersHorizontal
   },
   async mounted() {
-    const { products, filters } = await listProducts(this.currentPage);
+    const { products, filters } = await listProducts(this.currentPage, this.typeSelected);
     this.products = products;
     this.filters = filters;
   },
@@ -42,7 +42,7 @@ export default {
   methods: {
     async goToPage(page: number) {
       this.currentPage = page;
-      const { products } = await listProducts(this.currentPage);
+      const { products } = await listProducts(this.currentPage, this.typeSelected);
       this.products = products;
 
       window.scrollTo({
@@ -50,8 +50,10 @@ export default {
         behavior: 'smooth'
       });
     },
-    handleTypeFilterChange(event) {
+    async handleTypeFilterChange(event) {
       this.typeSelected = event.target.value;
+      const { products } = await listProducts(this.currentPage, this.typeSelected);
+      this.products = products;
     }
   }
 }
@@ -65,7 +67,7 @@ export default {
       class="type"
       name="type"
       id="type"
-      @select="handleTypeFilterChange($event)"
+      @change="handleTypeFilterChange($event)"
     >
       <option value="" disabled selected>TIPO</option>
       <option
